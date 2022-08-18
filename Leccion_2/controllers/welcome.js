@@ -6,6 +6,7 @@ var controller = {
     res.send("Mi primer debug");
   },
 
+  /*
   alumnos: (req, res) => {
     res.send("Mi listado de alumnos");
   },
@@ -36,7 +37,8 @@ var controller = {
     console.log(user_info);
     return res.status(200).json({
       status: 200,
-      nombre_alumno: user_info.nombre + " " + user_info.apellido,
+      nombre_alumno: user_info.nombre + " " + 
+      user_info.apellido,
       edad_alumno: user_info.edad,
     });
   },
@@ -48,6 +50,7 @@ var controller = {
   eliminar_alumno: (req, res) => {
     res.send("Eliminamos un alumno");
   },
+  */
 };
 
 module.exports = controller;
