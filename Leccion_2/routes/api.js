@@ -16,6 +16,15 @@ api.delete("/alumno", WelcomeController.eliminar_alumno);
 */
 api.get("/alumnos", AlumnosController.alumnos);
 api.get("/alumno/:n_lista", AlumnosController.alumno);
-api.post("/alumno",[body("n_cuenta").not().isEmpty(),body("nombre").not().isEmpty(),body("edad").not().isEmpty(),body("genero").not().isEmpty()],AlumnosController.crear_alumno);
+api.post(
+  "/alumno",
+  [
+    body("n_cuenta").not().isEmpty(),
+    body("nombre").not().isEmpty(),
+    body("edad").not().isEmpty(),
+    body("genero").not().isEmpty(),
+  ],
+  AlumnosController.crear_alumno
+);
 
 module.exports = api;

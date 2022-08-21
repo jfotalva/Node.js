@@ -7,6 +7,7 @@ var AlumnosSchema = Schema({
   nombre: { type: String, require: true },
   edad: { type: Number, require: true },
   genero: { type: String, require: true },
+  //__v: { type: Number, select: false, versionKey: "1.0" }
 });
 
 module.exports = mongoose.model("alumnos", AlumnosSchema);
