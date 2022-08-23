@@ -15,7 +15,7 @@ var controller = {
           .status(200)
           .json({ status: 200, mensaje: "No hay Alumnos." });
       } else {
-        console.log(alumnos);
+        //console.log(alumnos);
         return res.status(200).json({ status: 200, data: alumnos });
       }
     });
@@ -24,12 +24,12 @@ var controller = {
   alumno: function (req, res) {
     let n_lista = req.params.n_lista;
     Alumnos.findOne({ n_cuenta: n_lista }).exec((err, alumno) => {
-      console.log(n_lista);
+      //console.log(n_lista);
       if (err) {
         return res.status(500).json({ status: 500, mensaje: err });
       }
       if (alumno) {
-        console.log(alumno);
+        //console.log(alumno);
         return res.status(200).json({ status: 200, data: alumno });
       } else {
         return res
@@ -70,7 +70,7 @@ var controller = {
               status: 200,
               mensaje: "No se logró almacenar el Alumno",
             });
-          console.log(alumnoStored);
+          //console.log(alumnoStored);
           return res
             .status(200)
             .json({ status: 200, mensaje: "Alumno almacenado. " });
@@ -80,8 +80,65 @@ var controller = {
   },
 
   update_alumno: function (req, res) {
-    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ status: 400, errors: errors.array() });
+    }
+    let n_cuenta = req.params.n_cuenta;
+    let user_info = req.body;
+
+    let alumno_info_update = {
+      nombre: user_info.nombre,
+      edad: user_info.edad,
+      genero: user_info.genero,
+    };
+
+    Alumnos.findOneAndUpdate(
+      { n_cuenta: n_cuenta },
+      alumno_info_update,
+      { new: true },
+      (err, alumnoUpdate) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ status: 500, mensaje: "Error al actualizar. " + err });
+        }
+        if (!alumnoUpdate) {
+          return res
+            .status(404)
+            .json({ status: 404, mensaje: "No existe el Alumno. " });
+        } else {
+          return res.status(200).json({
+            nombre: alumnoUpdate.nombre,
+            edad: alumnoUpdate.edad,
+            genero: alumnoUpdate.genero,
+            mensaje: "Actualización exitosa. ",
+          });
+        }
+      }
+    );
   },
-  delete_alumno: function (req, res) {}
+
+  delete_alumno: function (req, res) {
+    let n_cuenta = req.params.n_cuenta;
+    Alumnos.findOneAndRemove({ n_cuenta: n_cuenta }, (err, alumnodelete) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ status: 500, mensaje: "Error al eliminar. " + err });
+      }
+      if (!alumnodelete) {
+        return res
+          .status(404)
+          .json({ status: 404, mensaje: "No existe el Alumno. " });
+      } else {
+        console.log(alumnodelete);
+        return res.status(200).json({
+          status: 200,
+          mensaje: "Eliminación exitosa. ",
+        });
+      }
+    });
+  },
 };
 module.exports = controller;
