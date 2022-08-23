@@ -13,7 +13,7 @@ var controller = {
       if (!alumnos.length) {
         return res
           .status(200)
-          .json({ status: 200, mensaje: "No hay alumnos." });
+          .json({ status: 200, mensaje: "No hay Alumnos." });
       } else {
         console.log(alumnos);
         return res.status(200).json({ status: 200, data: alumnos });
@@ -34,7 +34,7 @@ var controller = {
       } else {
         return res
           .status(200)
-          .json({ status: 200, mensaje: "No se encontró el alumno." });
+          .json({ status: 200, mensaje: "No se encontró el Alumno." });
       }
     });
   },
@@ -68,17 +68,20 @@ var controller = {
           if (!alumnoStored)
             return res.status(200).json({
               status: 200,
-              mensaje: "No se logró almacenar el alumno",
+              mensaje: "No se logró almacenar el Alumno",
             });
           console.log(alumnoStored);
           return res
             .status(200)
-            .json({ status: 200, mensaje: "Usuario almacenado. " });
+            .json({ status: 200, mensaje: "Alumno almacenado. " });
         });
       }
     });
   },
 
-  update_alumnos: function (req, res) {},
+  update_alumno: function (req, res) {
+    
+  },
+  delete_alumno: function (req, res) {}
 };
 module.exports = controller;

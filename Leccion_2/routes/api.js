@@ -5,15 +5,12 @@ const { body } = require("express-validator");
 
 var WelcomeController = require("../controllers/welcome");
 var AlumnosController = require("../controllers/alumnosController");
+var MaestrosController = require("../controllers/maestrosController");
 
 api.get("/", WelcomeController.welcome);
-/*
-api.get("/alumnos", WelcomeController.alumnos);
-api.get("/alumno", WelcomeController.alumno);
-api.post("/alumno", WelcomeController.crear_alumno);
-api.put("/alumno", WelcomeController.actualizar_alumno);
-api.delete("/alumno", WelcomeController.eliminar_alumno);
-*/
+
+
+//#region Alumnos
 api.get("/alumnos", AlumnosController.alumnos);
 api.get("/alumno/:n_lista", AlumnosController.alumno);
 api.post(
@@ -26,5 +23,29 @@ api.post(
   ],
   AlumnosController.crear_alumno
 );
+api.put("/alumno/:n_lista", AlumnosController.update_alumno);
+api.delete("/alumno/:n_lista", AlumnosController.delete_alumno);
+//#endregion
+
+//#region Maestros
+api.get("/maestros", MaestrosController.maestros);
+api.get("/maestro/:n_lista", MaestrosController.maestro);
+api.post(
+  "/maestro",
+  [
+    body("cedula").not().isEmpty(),
+    body("nombre").not().isEmpty(),
+    body("direccion").not().isEmpty(),
+    body("mail").not().isEmpty(),
+    body("telefono").not().isEmpty(),
+    body("area").not().isEmpty()
+  ],
+  MaestrosController.crear_maestro
+);
+api.put("/maestro/:n_lista", MaestrosController.update_maestro);
+api.delete("/maestro/:n_lista", MaestrosController.delete_maestro);
+//#endregion
+
+
 
 module.exports = api;
