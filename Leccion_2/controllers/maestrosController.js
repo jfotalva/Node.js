@@ -15,7 +15,7 @@ var controller = {
           .status(200)
           .json({ status: 200, mensaje: "No hay Maestros." });
       } else {
-        console.log(maestros);
+        //console.log(maestros);
         return res.status(200).json({ status: 200, data: maestros });
       }
     });
@@ -24,7 +24,7 @@ var controller = {
   maestro: function (req, res) {
     let n_lista = req.params.n_lista;
     Maestros.findOne({ cedula: n_lista }).exec((err, maestro) => {
-      console.log(n_lista);
+      //console.log(n_lista);
       if (err) {
         return res.status(500).json({ status: 500, mensaje: err });
       }
@@ -72,7 +72,7 @@ var controller = {
               status: 200,
               mensaje: "No se logró almacenar el Maestro",
             });
-          console.log(maestroStored);
+          //console.log(maestroStored);
           return res
             .status(200)
             .json({ status: 200, mensaje: "Maestro almacenado. " });
