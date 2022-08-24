@@ -20,7 +20,8 @@ api.post(
     body("edad").not().isEmpty(),
     body("genero").not().isEmpty(),
   ],
-  AlumnosController.crear_alumno);
+  AlumnosController.crear_alumno
+);
 api.put(
   "/alumno/:n_cuenta",
   [
@@ -28,8 +29,14 @@ api.put(
     body("edad").not().isEmpty(),
     body("genero").not().isEmpty(),
   ],
-  AlumnosController.update_alumno);
+  AlumnosController.update_alumno
+);
 api.delete("/alumno/:n_cuenta", AlumnosController.delete_alumno);
+
+//validaciones sin parámetros:
+api.get("/alumno/", AlumnosController.endpoint_invalido);
+api.put("/alumno/", AlumnosController.endpoint_invalido);
+api.delete("/alumno/", AlumnosController.endpoint_invalido);
 //#endregion
 
 //#region Maestros

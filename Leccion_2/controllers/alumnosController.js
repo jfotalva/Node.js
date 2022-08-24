@@ -132,12 +132,20 @@ var controller = {
           .status(404)
           .json({ status: 404, mensaje: "No existe el Alumno. " });
       } else {
-        console.log(alumnodelete);
+        //console.log(alumnodelete);
         return res.status(200).json({
           status: 200,
           mensaje: "Eliminación exitosa. ",
         });
       }
+    });
+  },
+
+  //Controlar peticiones a endpoints que requieren parámetros.
+  endpoint_invalido: function (req, res) {
+    return res.status(400).json({
+      status: 400,
+      mensaje: "400 Bad Request - faltan parámetros en la solicitud. ",
     });
   },
 };
