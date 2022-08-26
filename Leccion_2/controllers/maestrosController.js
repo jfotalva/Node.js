@@ -29,7 +29,7 @@ var controller = {
         return res.status(500).json({ status: 500, mensaje: err });
       }
       if (maestro) {
-        console.log(maestro);
+        //console.log(maestro);
         return res.status(200).json({ status: 200, data: maestro });
       } else {
         return res
@@ -81,7 +81,86 @@ var controller = {
     });
   },
 
-  update_maestro: function (req, res) {},
-  delete_maestro: function (req, res) {},
+  update_maestro: function (req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ status: 400, errors: errors.array() });
+    }
+    let _cedula = req.params.parametro;
+    let user_info = req.body;
+
+    let maestro_info_update = {
+      nombre: user_info.nombre,
+      direccion: user_info.direccion,
+      mail: user_info.mail,
+      telefono: user_info.telefono,
+      area: user_info.area,
+    };
+
+    Maestros.findOneAndUpdate(
+      { cedula: _cedula },
+      maestro_info_update,
+      { new: true },
+      (err, maestroUpdate) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ status: 500, mensaje: "Error al actualizar. " + err });
+        }
+        //console.log(param);
+        if (!maestroUpdate) {
+          return res
+            .status(404)
+            .json({ status: 404, mensaje: "No existe el Maestro. " });
+        } else {
+          return res.status(200).json({
+            nombre: maestroUpdate.nombre,
+            direccion: maestroUpdate.direccion,
+            mail: maestroUpdate.mail,
+            telefono: maestroUpdate.telefono,
+            area: maestroUpdate.area,
+            mensaje: "Actualización exitosa. ",
+          });
+        }
+      }
+    );
+  },
+
+  delete_maestro: function (req, res) {
+    let _cedula = req.params.parametro;
+    Maestros.findOneAndRemove({ cedula: _cedula }, (err, maestrodelete) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ status: 500, mensaje: "Error al eliminar. " + err });
+      }
+      if (!maestrodelete) {
+        return res
+          .status(404)
+          .json({ status: 404, mensaje: "No existe el Maestro. " });
+      } else {
+        //console.log(maestrodelete);
+        return res.status(200).json({
+          status: 200,
+          mensaje: "Eliminación exitosa. ",
+        });
+      }
+    });
+  },
+
+  //Controlar peticiones a endpoints que requieren parámetros.
+  endpoint_invalido: function (req, res) {
+    return res.status(400).json({
+      status: 400,
+      mensaje: "400 Bad Request - faltan parámetros en la solicitud. ",
+    });
+  },
+
+
 };
+
+function validar_correo(_correo) {
+  return _correo;
+}
+
 module.exports = controller;

@@ -84,7 +84,7 @@ var controller = {
     if (!errors.isEmpty()) {
       return res.status(400).json({ status: 400, errors: errors.array() });
     }
-    let n_cuenta = req.params.n_cuenta;
+    let _n_cuenta = req.params.parametro;
     let user_info = req.body;
 
     let alumno_info_update = {
@@ -94,7 +94,7 @@ var controller = {
     };
 
     Alumnos.findOneAndUpdate(
-      { n_cuenta: n_cuenta },
+      { n_cuenta: _n_cuenta },
       alumno_info_update,
       { new: true },
       (err, alumnoUpdate) => {
@@ -120,7 +120,7 @@ var controller = {
   },
 
   delete_alumno: function (req, res) {
-    let n_cuenta = req.params.n_cuenta;
+    let n_cuenta = req.params.parametro;
     Alumnos.findOneAndRemove({ n_cuenta: n_cuenta }, (err, alumnodelete) => {
       if (err) {
         return res

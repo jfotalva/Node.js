@@ -23,7 +23,7 @@ api.post(
   AlumnosController.crear_alumno
 );
 api.put(
-  "/alumno/:n_cuenta",
+  "/alumno/:parametro",
   [
     body("nombre").not().isEmpty(),
     body("edad").not().isEmpty(),
@@ -31,7 +31,7 @@ api.put(
   ],
   AlumnosController.update_alumno
 );
-api.delete("/alumno/:n_cuenta", AlumnosController.delete_alumno);
+api.delete("/alumno/:parametro", AlumnosController.delete_alumno);
 
 //validaciones sin parámetros:
 api.get("/alumno/", AlumnosController.endpoint_invalido);
@@ -55,9 +55,8 @@ api.post(
   MaestrosController.crear_maestro
 );
 api.put(
-  "/maestro/:n_lista",
+  "/maestro/:parametro",
   [
-    body("cedula").not().isEmpty(),
     body("nombre").not().isEmpty(),
     body("direccion").not().isEmpty(),
     body("mail").not().isEmpty(),
@@ -66,7 +65,11 @@ api.put(
   ],
   MaestrosController.update_maestro
 );
-api.delete("/maestro/:n_lista", MaestrosController.delete_maestro);
+api.delete("/maestro/:parametro", MaestrosController.delete_maestro);
+//validaciones sin parámetros:
+api.get("/maestro/", AlumnosController.endpoint_invalido);
+api.put("/maestro/", AlumnosController.endpoint_invalido);
+api.delete("/maestro/", AlumnosController.endpoint_invalido);
 //#endregion
 
 module.exports = api;
