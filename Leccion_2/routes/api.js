@@ -6,6 +6,7 @@ const { body } = require("express-validator");
 var WelcomeController = require("../controllers/welcome");
 var AlumnosController = require("../controllers/alumnosController");
 var MaestrosController = require("../controllers/maestrosController");
+var AuthController = require("../controllers/authController");
 
 api.get("/", WelcomeController.welcome);
 
@@ -72,4 +73,12 @@ api.put("/maestro/", AlumnosController.endpoint_invalido);
 api.delete("/maestro/", AlumnosController.endpoint_invalido);
 //#endregion
 
+//#region Seguridad
+api.post(
+  "/login",
+  [body("mail").not().isEmpty(), body("pass").not().isEmpty()],
+  AuthController.login
+);
+api.post("/logout", AuthController.logout);
+//#endregion
 module.exports = api;
