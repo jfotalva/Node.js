@@ -13,8 +13,8 @@ let userProtectUrl = require("../middlewares/authUser").userProtectUrl;
 api.get("/", WelcomeController.welcome);
 
 //#region Alumnos
-api.get("/alumnos", AlumnosController.alumnos);
-api.get("/alumno/:n_lista", AlumnosController.alumno);
+api.get("/alumnos", userProtectUrl, AlumnosController.alumnos);
+api.get("/alumno/:n_lista", userProtectUrl, AlumnosController.alumno);
 api.post(
   "/alumno",
   userProtectUrl,
@@ -28,6 +28,7 @@ api.post(
 );
 api.put(
   "/alumno/:parametro",
+  userProtectUrl,
   [
     body("nombre").not().isEmpty(),
     body("edad").not().isEmpty(),
@@ -35,7 +36,11 @@ api.put(
   ],
   AlumnosController.update_alumno
 );
-api.delete("/alumno/:parametro", AlumnosController.delete_alumno);
+api.delete(
+  "/alumno/:parametro",
+  userProtectUrl,
+  AlumnosController.delete_alumno
+);
 
 //validaciones sin parámetros:
 api.get("/alumno/", AlumnosController.endpoint_invalido);
@@ -44,10 +49,11 @@ api.delete("/alumno/", AlumnosController.endpoint_invalido);
 //#endregion
 
 //#region Maestros
-api.get("/maestros", MaestrosController.maestros);
-api.get("/maestro/:n_lista", MaestrosController.maestro);
+api.get("/maestros", userProtectUrl, MaestrosController.maestros);
+api.get("/maestro/:n_lista", userProtectUrl, MaestrosController.maestro);
 api.post(
   "/maestro",
+  userProtectUrl,
   [
     body("cedula").not().isEmpty(),
     body("nombre").not().isEmpty(),
@@ -60,6 +66,7 @@ api.post(
 );
 api.put(
   "/maestro/:parametro",
+  userProtectUrl,
   [
     body("nombre").not().isEmpty(),
     body("direccion").not().isEmpty(),
@@ -69,7 +76,11 @@ api.put(
   ],
   MaestrosController.update_maestro
 );
-api.delete("/maestro/:parametro", MaestrosController.delete_maestro);
+api.delete(
+  "/maestro/:parametro",
+  userProtectUrl,
+  MaestrosController.delete_maestro
+);
 //validaciones sin parámetros:
 api.get("/maestro/", AlumnosController.endpoint_invalido);
 api.put("/maestro/", AlumnosController.endpoint_invalido);
@@ -82,6 +93,7 @@ api.post(
   [body("mail").not().isEmpty(), body("pass").not().isEmpty()],
   AuthController.login
 );
-api.post("/logout", AuthController.logout);
+api.post("/logout", userProtectUrl, AuthController.logout);
 //#endregion
+
 module.exports = api;

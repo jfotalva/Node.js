@@ -8,15 +8,13 @@ var controller = {
   maestros: function (req, res) {
     Maestros.find({}).exec((err, maestros) => {
       if (err) {
-        return res.status(500).json({ status: 500, mensaje: err });
+        return res.status(500).json({ mensaje: err });
       }
       if (!maestros.length) {
-        return res
-          .status(200)
-          .json({ status: 200, mensaje: "No hay Maestros." });
+        return res.status(200).json({ mensaje: "No hay Maestros." });
       } else {
         //console.log(maestros);
-        return res.status(200).json({ status: 200, data: maestros });
+        return res.status(200).json({ data: maestros });
       }
     });
   },
@@ -26,15 +24,13 @@ var controller = {
     Maestros.findOne({ cedula: n_lista }).exec((err, maestro) => {
       //console.log(n_lista);
       if (err) {
-        return res.status(500).json({ status: 500, mensaje: err });
+        return res.status(500).json({ mensaje: err });
       }
       if (maestro) {
         //console.log(maestro);
-        return res.status(200).json({ status: 200, data: maestro });
+        return res.status(200).json({ data: maestro });
       } else {
-        return res
-          .status(200)
-          .json({ status: 200, mensaje: "No se encontró el Maestro." });
+        return res.status(200).json({ mensaje: "No se encontró el Maestro." });
       }
     });
   },
@@ -42,17 +38,16 @@ var controller = {
   crear_maestro: function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ status: 400, errors: errors.array() });
+      return res.status(400).json({ serrors: errors.array() });
     }
     let user_info = req.body;
     Maestros.findOne({ cedula: user_info.cedula }).exec((err, maestro) => {
       if (err) {
-        return res.status(500).json({ status: 500, mensaje: err });
+        return res.status(500).json({ mensaje: err });
       }
 
       if (maestro) {
         return res.status(200).json({
-          status: 200,
           mensaje: "El Maestro ya existe, no se puede almacenar. ",
         });
       } else {
@@ -66,16 +61,14 @@ var controller = {
         maestros_model.area = user_info.area;
 
         maestros_model.save((err, maestroStored) => {
-          if (err) return res.status(500).json({ status: 500, mensaje: err });
+          if (err) return res.status(500).json({ mensaje: err });
           if (!maestroStored)
             return res.status(200).json({
               status: 200,
               mensaje: "No se logró almacenar el Maestro",
             });
           //console.log(maestroStored);
-          return res
-            .status(200)
-            .json({ status: 200, mensaje: "Maestro almacenado. " });
+          return res.status(200).json({ mensaje: "Maestro almacenado. " });
         });
       }
     });
@@ -84,7 +77,7 @@ var controller = {
   update_maestro: function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ status: 400, errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
     let _cedula = req.params.parametro;
     let user_info = req.body;
@@ -105,13 +98,11 @@ var controller = {
         if (err) {
           return res
             .status(500)
-            .json({ status: 500, mensaje: "Error al actualizar. " + err });
+            .json({ mensaje: "Error al actualizar. " + err });
         }
         //console.log(param);
         if (!maestroUpdate) {
-          return res
-            .status(404)
-            .json({ status: 404, mensaje: "No existe el Maestro. " });
+          return res.status(404).json({ mensaje: "No existe el Maestro. " });
         } else {
           return res.status(200).json({
             nombre: maestroUpdate.nombre,
@@ -130,18 +121,13 @@ var controller = {
     let _cedula = req.params.parametro;
     Maestros.findOneAndRemove({ cedula: _cedula }, (err, maestrodelete) => {
       if (err) {
-        return res
-          .status(500)
-          .json({ status: 500, mensaje: "Error al eliminar. " + err });
+        return res.status(500).json({ mensaje: "Error al eliminar. " + err });
       }
       if (!maestrodelete) {
-        return res
-          .status(404)
-          .json({ status: 404, mensaje: "No existe el Maestro. " });
+        return res.status(404).json({ mensaje: "No existe el Maestro. " });
       } else {
         //console.log(maestrodelete);
         return res.status(200).json({
-          status: 200,
           mensaje: "Eliminación exitosa. ",
         });
       }
@@ -151,12 +137,9 @@ var controller = {
   //Controlar peticiones a endpoints que requieren parámetros.
   endpoint_invalido: function (req, res) {
     return res.status(400).json({
-      status: 400,
       mensaje: "400 Bad Request - faltan parámetros en la solicitud. ",
     });
   },
-
-
 };
 
 function validar_correo(_correo) {
