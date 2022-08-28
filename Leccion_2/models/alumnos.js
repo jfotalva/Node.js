@@ -6,8 +6,7 @@ var AlumnosSchema = Schema({
   n_cuenta: { type: Number, require: true, unique: true },
   nombre: { type: String, require: true },
   edad: { type: Number, require: true },
-  genero: { type: String, require: true },
-  //__v: { type: Number, select: false, versionKey: "1.0" }
+  genero: { type: String, require: true }
 });
 
 module.exports = mongoose.model("alumnos", AlumnosSchema);

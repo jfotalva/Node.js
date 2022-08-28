@@ -13,7 +13,6 @@ var controller = {
       if (!alumnos.length) {
         return res.status(200).json({ mensaje: "No hay Alumnos." });
       } else {
-        //console.log(alumnos);
         return res.status(200).json({ data: alumnos });
       }
     });
@@ -22,12 +21,10 @@ var controller = {
   alumno: function (req, res) {
     let n_lista = req.params.n_lista;
     Alumnos.findOne({ n_cuenta: n_lista }).exec((err, alumno) => {
-      //console.log(n_lista);
       if (err) {
         return res.status(500).json({ mensaje: err });
       }
       if (alumno) {
-        //console.log(alumno);
         return res.status(200).json({ data: alumno });
       } else {
         return res.status(200).json({ mensaje: "No se encontró el Alumno." });
@@ -64,7 +61,6 @@ var controller = {
             return res.status(200).json({
               mensaje: "No se logró almacenar el Alumno",
             });
-          //console.log(alumnoStored);
           return res.status(200).json({ mensaje: "Alumno almacenado. " });
         });
       }
@@ -118,7 +114,6 @@ var controller = {
       if (!alumnodelete) {
         return res.status(404).json({ mensaje: "No existe el Alumno. " });
       } else {
-        //console.log(alumnodelete);
         return res.status(200).json({
           mensaje: "Eliminación exitosa. ",
         });

@@ -13,7 +13,6 @@ var controller = {
       if (!maestros.length) {
         return res.status(200).json({ mensaje: "No hay Maestros." });
       } else {
-        //console.log(maestros);
         return res.status(200).json({ data: maestros });
       }
     });
@@ -22,12 +21,10 @@ var controller = {
   maestro: function (req, res) {
     let n_lista = req.params.n_lista;
     Maestros.findOne({ cedula: n_lista }).exec((err, maestro) => {
-      //console.log(n_lista);
       if (err) {
         return res.status(500).json({ mensaje: err });
       }
       if (maestro) {
-        //console.log(maestro);
         return res.status(200).json({ data: maestro });
       } else {
         return res.status(200).json({ mensaje: "No se encontró el Maestro." });
@@ -67,7 +64,6 @@ var controller = {
               status: 200,
               mensaje: "No se logró almacenar el Maestro",
             });
-          //console.log(maestroStored);
           return res.status(200).json({ mensaje: "Maestro almacenado. " });
         });
       }
@@ -100,7 +96,6 @@ var controller = {
             .status(500)
             .json({ mensaje: "Error al actualizar. " + err });
         }
-        //console.log(param);
         if (!maestroUpdate) {
           return res.status(404).json({ mensaje: "No existe el Maestro. " });
         } else {
@@ -126,7 +121,6 @@ var controller = {
       if (!maestrodelete) {
         return res.status(404).json({ mensaje: "No existe el Maestro. " });
       } else {
-        //console.log(maestrodelete);
         return res.status(200).json({
           mensaje: "Eliminación exitosa. ",
         });

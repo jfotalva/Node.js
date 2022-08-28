@@ -15,14 +15,24 @@ const middlewares = {
             return res.status(403).json({ mensaje: "Token inválido_ " });
           } else {
             req.decoded = decoded;
-            Sessions.findOne({ user_id: req.decoded.user_id, jwt: token }).exec((err, session) => {
-                if (err) return res.status(500).json({ mensaje: "Error al retornar los datos. " });
-                if (!session) return res.status(404).json({mensaje: "Los datos de autenticación son inválidos. "});
+            Sessions.findOne({ user_id: req.decoded.user_id, jwt: token }).exec(
+              (err, session) => {
+                if (err)
+                  return res
+                    .status(500)
+                    .json({ mensaje: "Error al retornar los datos. " });
+                if (!session)
+                  return res
+                    .status(404)
+                    .json({
+                      mensaje: "Los datos de autenticación son inválidos. ",
+                    });
                 next();
-            });
+              }
+            );
           }
-        });
-        
+        }
+      );
     } else {
       res.status(403).send({
         mensaje: "Token inválido. ",
