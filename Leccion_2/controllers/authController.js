@@ -29,17 +29,20 @@ var controller = {
           user_id: usuario.id,
         };
 
+        console.log(payload);
         const access_token = jwt.sign(
           payload,
           "iF38kDDIIj4Aife1YoyNZKDATH7VySYGaboEGl3z3ZpdaRQHiLN4lvnpQdBgE7m7QDUlgnbMc5GEExqfuIzCEKoPNgPDlwST6ZdC538StA6141X8JQiUshlWamHnDXThcvFn4YHQOTYfvQeytHj543bL6nlfovOpKSqtnASajGOZkFd3hO6Q9a1c9m1JLN7Z6XPeOe0Rvi33noM8jDFhrnKGbiysvjtjHUnBVlcqql7gVsrYCHGAvSiKVxZHyVJN",
-          { expiresIn: "1d" }
+          { expiresIn: "1m" }
         );
-        console.log(payload);
+        console.log(access_token);
         return res.status(200).json({ status: 200, mensaje: "Usuario logueado", token: access_token });
       }
     );
   },
 
-  logout: function (req, res) {},
+  logout: function (req, res) {
+
+  },
 };
 module.exports = controller;

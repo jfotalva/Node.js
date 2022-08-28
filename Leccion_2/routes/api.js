@@ -6,7 +6,9 @@ const { body } = require("express-validator");
 var WelcomeController = require("../controllers/welcome");
 var AlumnosController = require("../controllers/alumnosController");
 var MaestrosController = require("../controllers/maestrosController");
-var AuthController = require("../controllers/authController");
+let AuthController = require("../controllers/authController");
+
+let userProtectUrl = require("../middlewares/authUser").userProtectUrl;
 
 api.get("/", WelcomeController.welcome);
 
@@ -15,6 +17,7 @@ api.get("/alumnos", AlumnosController.alumnos);
 api.get("/alumno/:n_lista", AlumnosController.alumno);
 api.post(
   "/alumno",
+  userProtectUrl,
   [
     body("n_cuenta").not().isEmpty(),
     body("nombre").not().isEmpty(),
