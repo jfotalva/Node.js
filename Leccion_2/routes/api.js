@@ -7,8 +7,8 @@ var WelcomeController = require("../controllers/welcome");
 var AlumnosController = require("../controllers/alumnosController");
 var MaestrosController = require("../controllers/maestrosController");
 let AuthController = require("../controllers/authController");
-
 let userProtectUrl = require("../middlewares/authUser").userProtectUrl;
+let UserController = require("../controllers/usuariosController");
 
 api.get("/", WelcomeController.welcome);
 
@@ -94,6 +94,11 @@ api.post(
   AuthController.login
 );
 api.post("/logout", userProtectUrl, AuthController.logout);
+//#endregion
+
+//#region Usuarios
+api.post("/usuario",[body("mail").not().isEmpty(), body("pass").not().isEmpty()],UserController.crear_usuario);
+api.delete("/usuario",[body("mail").not().isEmpty()],UserController.delete_usuario);
 //#endregion
 
 module.exports = api;

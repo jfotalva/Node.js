@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "9b7b03ce-94b0-413a-abff-db191abf8622",
+		"name": "Node.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alumnos",
+			"item": [
+				{
+					"name": "/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alumnos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZGE2NTA4MGM2MjIyZDk0OTE3ZDMwIiwiaWF0IjoxNjYxODM4OTM3LCJleHAiOjE2NjE5MjUzMzd9.VY32hm0QPGum7anycWjLmbL3zzic1A83OP2weDrn_rM",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alumno",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/alumno/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"alumno",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearAlumno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwODRlNGUxY2M5NjdkODU2NGMwMjUxIiwiaWF0IjoxNjYxNjY3NjU5LCJleHAiOjE2NjE2Njc3MTl9.9E04DBrDsKIvnCfS1Muy6S3MYD6J9GqfkN3z5f9VsGI",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"n_cuenta\": 7,\r\n    \"nombre\": \"Pepito Perez - Bunny\",\r\n    \"apellido\": \"Bad Bunny\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 88\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/alumno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"alumno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarAlumno",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"nombre\": \"Adonay\",\r\n            \"edad\": 46,\r\n            \"genero\": \"M\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/alumno/6?access-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"alumno",
+								"6"
+							],
+							"query": [
+								{
+									"key": "access-token",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarAlumno",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3700/alumno/10?access-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"alumno",
+								"10"
+							],
+							"query": [
+								{
+									"key": "access-token",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Maestros",
+			"item": [
+				{
+					"name": "Maestros",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZDk3NWQ5MTRlNjFhYWJhOGQyNGU4IiwiaWF0IjoxNjYxODM3OTIyLCJleHAiOjE2NjE5MjQzMjJ9.NoCRegd3G_1anAKFOB0lwHdbWkMtCN8bZFS5zSvELfc",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/maestros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"maestros"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Maestro",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/maestro/4?access-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"maestro",
+								"4"
+							],
+							"query": [
+								{
+									"key": "access-token",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearMaestro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"cedula\": 55,\r\n    \"nombre\": \"Sandra Martinez\",\r\n    \"direccion\": \"Barranquilla\",\r\n    \"mail\": \"sandrita@hotmail.com\",\r\n    \"telefono\": 40,\r\n    \"area\": \"Biología\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/maestro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"maestro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarMaestro",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Vecino\",\r\n    \"direccion\" : \"Niquia\",\r\n    \"mail\" : \"PepitoPerez@hotmail.com\",\r\n    \"telefono\" : 2334455,\r\n    \"area\" : \"Física\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/maestro/55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"maestro",
+								"55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarMaestro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3700/maestro/22?access-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"maestro",
+								"22"
+							],
+							"query": [
+								{
+									"key": "access-token",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\" : \"naos.computer@gmail.com\",\r\n    \"pass\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3700/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZGE2NTA4MGM2MjIyZDk0OTE3ZDMwIiwiaWF0IjoxNjYxODM4OTM3LCJleHAiOjE2NjE5MjUzMzd9.VY32hm0QPGum7anycWjLmbL3zzic1A83OP2weDrn_rM",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3700/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3700",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "CrearUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\":\"naos.computer@gmail.com\",\r\n    \"pass\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Localhost:3700/usuario",
+							"host": [
+								"Localhost"
+							],
+							"port": "3700",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\":\"naos.computer@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Localhost:3700/usuario",
+							"host": [
+								"Localhost"
+							],
+							"port": "3700",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

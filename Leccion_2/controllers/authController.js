@@ -2,6 +2,7 @@
 
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcrypt");
 
 var Usuarios = require("../models/usuarios");
 var Sessions = require("../models/sessions");
@@ -12,17 +13,20 @@ var controller = {
   login: function (req, res) {
     //validamos los datos que se envían al endpoint
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
-    }
+
     let login_info = req.body;
-    Usuarios.findOne({ mail: login_info.mail, pass: login_info.pass }).exec(
-      (err, usuario) => {
-        if (err) {
-          return res.status(500).json({ mensaje: err });
-        }
-        if (!usuario)
-          return res.status(200).json({ mensaje: "Credenciales inválidas. " });
+    Usuarios.findOne({ mail: login_info.mail }).exec((err, usuario) => {
+      if (err) return res.status(500).json({ mensaje: err });
+      if (!usuario)
+        return res.status(200).json({ mensaje: "Credenciales inválidas. M" });
+
+      //Comparamos info en CLARO Vs. encriptada de la DB.
+      bcrypt.compare(login_info.pass, usuario.pass, function (err, result) {
+        if (err) return res.status(500).json({ mensaje: err });
+        if (!result)
+          return res.status(200).json({ mensaje: "Credenciales inválidas. P" });
 
         const payload = {
           user_id: usuario.id,
@@ -54,8 +58,8 @@ var controller = {
             });
           }
         );
-      }
-    );
+      });
+    });
   },
 
   logout: function (req, res) {
