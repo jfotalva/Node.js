@@ -28,7 +28,7 @@ var controller = {
         let usuarios_model = new Usuarios();
         usuarios_model.mail = user_info.mail;
         //Encriptar Password
-        bcrypt.hash(user_info.pass, saltRounds, function (err, hash) {
+       bcrypt.hash(user_info.pass, saltRounds, function (err, hash) { 
           usuarios_model.pass = hash;
           usuarios_model.save((err, usuarioStored) => {
             if (err) return res.status(500).json({ mensaje: err });

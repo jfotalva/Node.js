@@ -6,7 +6,8 @@ const bcrypt = require("bcrypt");
 
 var Usuarios = require("../models/usuarios");
 var Sessions = require("../models/sessions");
-
+const password =
+  "iF38kDDIIj4Aife1YoyNZKDATH7VySYGaboEGl3z3ZpdaRQHiLN4lvnpQdBgE7m7QDUlgnbMc5GEExqfuIzCEKoPNgPDlwST6ZdC538StA6141X8JQiUshlWamHnDXThcvFn4YHQOTYfvQeytHj543bL6nlfovOpKSqtnASajGOZkFd3hO6Q9a1c9m1JLN7Z6XPeOe0Rvi33noM8jDFhrnKGbiysvjtjHUnBVlcqql7gVsrYCHGAvSiKVxZHyVJN";
 const _expiresIn = "1d";
 
 var controller = {
@@ -20,30 +21,53 @@ var controller = {
     Usuarios.findOne({ mail: login_info.mail }).exec((err, usuario) => {
       if (err) return res.status(500).json({ mensaje: err });
       if (!usuario)
-        return res.status(200).json({ mensaje: "Credenciales inválidas. M" });
+        return res.status(200).json({ mensaje: "Credenciales inválidas. " });
 
       //Comparamos info en CLARO Vs. encriptada de la DB.
       bcrypt.compare(login_info.pass, usuario.pass, function (err, result) {
         if (err) return res.status(500).json({ mensaje: err });
         if (!result)
-          return res.status(200).json({ mensaje: "Credenciales inválidas. P" });
+          return res.status(200).json({ mensaje: "Credenciales inválidas_" });
 
         const payload = {
           user_id: usuario.id,
         };
 
         //console.log(payload);
-        const access_token = jwt.sign(
-          payload,
-          "iF38kDDIIj4Aife1YoyNZKDATH7VySYGaboEGl3z3ZpdaRQHiLN4lvnpQdBgE7m7QDUlgnbMc5GEExqfuIzCEKoPNgPDlwST6ZdC538StA6141X8JQiUshlWamHnDXThcvFn4YHQOTYfvQeytHj543bL6nlfovOpKSqtnASajGOZkFd3hO6Q9a1c9m1JLN7Z6XPeOe0Rvi33noM8jDFhrnKGbiysvjtjHUnBVlcqql7gVsrYCHGAvSiKVxZHyVJN",
-          { expiresIn: _expiresIn }
-        );
+        const access_token = jwt.sign(payload, password, {
+          expiresIn: _expiresIn,
+        });
 
         let update = {
           user_id: usuario.id,
           jwt: access_token,
         };
-
+        const date = new Date();
+        const [month, day, year] = [
+          date.getMonth() + 1,
+          date.getDate(),
+          date.getFullYear(),
+        ];
+        const [hour, minutes, seconds] = [
+          date.getHours(),
+          date.getMinutes(),
+          date.getSeconds(),
+        ];
+        var fechaHora =
+          day +
+          "-" +
+          month +
+          "-" +
+          year +
+          "--> " +
+          hour +
+          ":" +
+          minutes +
+          ":" +
+          seconds;
+        console.log(
+          "Token generado: " + fechaHora + "\n[" + access_token + "]"
+        );
         Sessions.findOneAndUpdate(
           { user_id: usuario.id },
           update,
@@ -55,6 +79,7 @@ var controller = {
             return res.status(200).json({
               mensaje: "Autenticación exitosa. ",
               token: access_token,
+              date: fechaHora,
             });
           }
         );

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9b7b03ce-94b0-413a-abff-db191abf8622",
+		"_postman_id": "b2c1e814-4f34-4aa2-9853-06c1806cb769",
 		"name": "Node.js",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -49,7 +49,7 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZGE2NTA4MGM2MjIyZDk0OTE3ZDMwIiwiaWF0IjoxNjYxODM4OTM3LCJleHAiOjE2NjE5MjUzMzd9.VY32hm0QPGum7anycWjLmbL3zzic1A83OP2weDrn_rM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTg0MjIyLCJleHAiOjE2NjIwNzA2MjJ9.mqbD56gkqXufJ4Q6UDQjsYG9QaU3Livz8iZEujaHkPk",
 								"type": "default"
 							}
 						],
@@ -86,7 +86,7 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
 								"type": "default"
 							}
 						],
@@ -100,7 +100,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3700/alumno/10",
+							"raw": "http://localhost:3700/alumno/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -108,7 +108,7 @@
 							"port": "3700",
 							"path": [
 								"alumno",
-								"10"
+								"7"
 							]
 						}
 					},
@@ -121,13 +121,13 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwODRlNGUxY2M5NjdkODU2NGMwMjUxIiwiaWF0IjoxNjYxNjY3NjU5LCJleHAiOjE2NjE2Njc3MTl9.9E04DBrDsKIvnCfS1Muy6S3MYD6J9GqfkN3z5f9VsGI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \r\n    \"n_cuenta\": 7,\r\n    \"nombre\": \"Pepito Perez - Bunny\",\r\n    \"apellido\": \"Bad Bunny\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 88\r\n}",
+							"raw": "{   \r\n    \"n_cuenta\": 9,\r\n    \"nombre\": \"Tatiana\",\r\n    \"apellido\": \"De los río\",\r\n    \"genero\": \"F\",\r\n    \"edad\": 43\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -152,10 +152,16 @@
 					"name": "ActualizarAlumno",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n            \"nombre\": \"Adonay\",\r\n            \"edad\": 46,\r\n            \"genero\": \"M\"\r\n}",
+							"raw": "{\r\n            \"nombre\": \"Ximena\",\r\n            \"edad\": 25,\r\n            \"genero\": \"F\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,7 +169,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3700/alumno/6?access-token",
+							"raw": "http://localhost:3700/alumno/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -171,12 +177,13 @@
 							"port": "3700",
 							"path": [
 								"alumno",
-								"6"
+								"5"
 							],
 							"query": [
 								{
-									"key": "access-token",
-									"value": null
+									"key": "",
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -187,9 +194,15 @@
 					"name": "EliminarAlumno",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3700/alumno/10?access-token",
+							"raw": "http://localhost:3700/alumno/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -197,13 +210,7 @@
 							"port": "3700",
 							"path": [
 								"alumno",
-								"10"
-							],
-							"query": [
-								{
-									"key": "access-token",
-									"value": null
-								}
+								"5"
 							]
 						}
 					},
@@ -224,7 +231,7 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZDk3NWQ5MTRlNjFhYWJhOGQyNGU4IiwiaWF0IjoxNjYxODM3OTIyLCJleHAiOjE2NjE5MjQzMjJ9.NoCRegd3G_1anAKFOB0lwHdbWkMtCN8bZFS5zSvELfc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
 								"type": "default"
 							}
 						],
@@ -249,8 +256,8 @@
 							],
 							"query": [
 								{
-									"key": "",
-									"value": "",
+									"key": "access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWJmZTlhMWRjYjVlMTExZWM2Y2U1IiwiaWF0IjoxNjYxOTExMDU0LCJleHAiOjE2NjE5OTc0NTR9.6fKfqT-eNOKRLYtkmz6GXvjiOv39WyojVwVrER3Wl4U",
 									"disabled": true
 								}
 							]
@@ -265,7 +272,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [],
@@ -276,7 +289,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3700/maestro/4?access-token",
+							"raw": "http://localhost:3700/maestro/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -284,12 +297,13 @@
 							"port": "3700",
 							"path": [
 								"maestro",
-								"4"
+								"7"
 							],
 							"query": [
 								{
-									"key": "access-token",
-									"value": null
+									"key": "",
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -303,13 +317,13 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \r\n    \"cedula\": 55,\r\n    \"nombre\": \"Sandra Martinez\",\r\n    \"direccion\": \"Barranquilla\",\r\n    \"mail\": \"sandrita@hotmail.com\",\r\n    \"telefono\": 40,\r\n    \"area\": \"Biología\"\r\n}",
+							"raw": "{   \r\n    \"cedula\": 8,\r\n    \"nombre\": \"Sandra Martinez\",\r\n    \"direccion\": \"Barranquilla\",\r\n    \"mail\": \"sandrita@hotmail.com\",\r\n    \"telefono\": 8888888,\r\n    \"area\": \"Biología\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -337,13 +351,13 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgyODg1LCJleHAiOjE2NjIwNjkyODV9.UKxhMu-XK8jy5vE4nJ6ItfMUjz6HjzACNS_tYLhRnA8",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\" : \"Vecino\",\r\n    \"direccion\" : \"Niquia\",\r\n    \"mail\" : \"PepitoPerez@hotmail.com\",\r\n    \"telefono\" : 2334455,\r\n    \"area\" : \"Física\"\r\n\r\n}",
+							"raw": "{\r\n    \"nombre\" : \"Profesor Editado\",\r\n    \"direccion\" : \"Guayabal\",\r\n    \"mail\" : \"Profesor.editado@yahoo.es\",\r\n    \"telefono\" : 5555555,\r\n    \"area\" : \"Física\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -351,7 +365,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3700/maestro/55",
+							"raw": "http://localhost:3700/maestro/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -359,7 +373,7 @@
 							"port": "3700",
 							"path": [
 								"maestro",
-								"55"
+								"5"
 							]
 						}
 					},
@@ -369,9 +383,15 @@
 					"name": "EliminarMaestro",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTgzOTU4LCJleHAiOjE2NjIwNzAzNTh9.8Xdi-xEnSle-FV37kYLNvTRrB9tKQHxQcASG1UqvTds",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3700/maestro/22?access-token",
+							"raw": "http://localhost:3700/maestro/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -379,12 +399,13 @@
 							"port": "3700",
 							"path": [
 								"maestro",
-								"22"
+								"3"
 							],
 							"query": [
 								{
-									"key": "access-token",
-									"value": null
+									"key": "",
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -431,19 +452,27 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZGE2NTA4MGM2MjIyZDk0OTE3ZDMwIiwiaWF0IjoxNjYxODM4OTM3LCJleHAiOjE2NjE5MjUzMzd9.VY32hm0QPGum7anycWjLmbL3zzic1A83OP2weDrn_rM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwZWMxMDFhMWRjYjVlMTExZWM2Y2VmIiwiaWF0IjoxNjYxOTg0NTgxLCJleHAiOjE2NjIwNzA5ODF9.0SwuxT2o-3j8rizdIZtfxwlPJS9Snere0W5uQHavDZI",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3700/logout",
+							"raw": "http://localhost:3700/logout/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3700",
 							"path": [
-								"logout"
+								"logout",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -461,7 +490,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mail\":\"naos.computer@gmail.com\",\r\n    \"pass\":\"123\"\r\n}",
+							"raw": "{\r\n    \"mail\" : \"juanito@gmail.com\",\r\n    \"pass\" : \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,9 +498,10 @@
 							}
 						},
 						"url": {
-							"raw": "Localhost:3700/usuario",
+							"raw": "http://localhost:3700/usuario",
+							"protocol": "http",
 							"host": [
-								"Localhost"
+								"localhost"
 							],
 							"port": "3700",
 							"path": [
@@ -488,7 +518,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mail\":\"naos.computer@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"mail\": \"juanito@gmail.com\",\r\n    \"pass\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -496,9 +526,10 @@
 							}
 						},
 						"url": {
-							"raw": "Localhost:3700/usuario",
+							"raw": "http://localhost:3700/usuario",
+							"protocol": "http",
 							"host": [
-								"Localhost"
+								"localhost"
 							],
 							"port": "3700",
 							"path": [
